@@ -1,8 +1,8 @@
 -- Membuat database
-CREATE DATABASE komputasi;
+CREATE DATABASE fpcloud;
 
 -- Menggunakan database
-USE komputasi;
+USE fpcloud;
 
 -- Tabel untuk pengguna
 CREATE TABLE users (
