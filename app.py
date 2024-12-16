@@ -128,33 +128,6 @@ def adminuser():
         return redirect(url_for('login'))
 
 
-@app.route('/export_to_excel')
-def export_to_excel():
-    if 'loggedin' in session:
-        # Mengambil data pengguna dari database
-        cursor.execute('SELECT * FROM users')
-        users = cursor.fetchall()
-        
-        # Mencetak data pertama untuk memeriksa jumlah kolom
-        print(users[0])  # Ini akan mencetak data pengguna pertama di console
-        
-        # Misalkan jumlah kolomnya 5, maka kita sesuaikan dengan nama kolom yang sesuai.
-        # Sesuaikan nama kolom berdasarkan struktur database Anda
-        df = pd.DataFrame(users, columns=["id_user", "name", "email", "phone", "Column4"])  # Ganti "Column5" dengan nama kolom yang sesuai
-        
-        # Menyimpan DataFrame ke file Excel
-        excel_file = pd.ExcelWriter("/C:/Users/ACER/Downloads/users_data.xlsx", engine='openpyxl')
-        df.to_excel(excel_file, index=False)
-        excel_file.save()
-        
-        # Mengirim file sebagai response untuk diunduh
-        return Response(
-            open("/mnt/data/users_data.xlsx", "rb").read(),
-            mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-            headers={"Content-Disposition": "attachment;filename=users_data.xlsx"}
-        )
-    else:
-        return redirect(url_for('login'))
 
 @app.route('/loginadmin', methods=['GET', 'POST'])
 def login_admin():
@@ -178,7 +151,7 @@ def login_admin():
         else:
             return render_template('/admin/ladmin.html', error="Email tidak ditemukan.")
 
-    return render_template('/admin/ladmin.html')
+    return render_template('/admin/admindashboard.html')
 
 # Logout admin
 @app.route('/logoutadmin')
