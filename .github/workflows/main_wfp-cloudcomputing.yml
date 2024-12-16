@@ -66,4 +66,4 @@ jobs:
         with:
           app-name: 'WFP-CloudComputing'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F2497FF0424749D0B9B2FA99DD25E3A6 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F4B0470FF3F2488BA23A294BCFFCC6EF }}
