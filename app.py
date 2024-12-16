@@ -151,7 +151,7 @@ def login_admin():
         else:
             return render_template('/admin/ladmin.html', error="Email tidak ditemukan.")
 
-    return render_template('/admin/admindashboard.html')
+    return render_template('/admin/ladmin')
 
 # Logout admin
 @app.route('/logoutadmin')
